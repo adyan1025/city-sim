@@ -1,0 +1,38 @@
+#navContainer {
+    border: 3px red solid;
+    display: flex;
+    justify-content: center;
+}
+#navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 5%;
+    padding-right: 5%;
+    border: 0px black solid;
+    border-radius: 50px;
+    background-color: rgba(255, 255, 255, 0.605);
+    color: black;
+    box-shadow: 3px 3px 3px black;
+    width: 100%;
+}
+#nav {
+    font-size: 1.5em;
+    border: 0px black solid;
+    word-spacing: 3em;
+}
+li {
+    list-style-type: none;
+    display: inline-block;
+}
+#titleContainer {
+    display: flex;
+    flex-direction: row;
+    border: 3px solid white;
+    justify-content: center;
+    align-items: center;
+}
+#title {
+    font-size: 5em;
+    border: 0px black solid;
+}
