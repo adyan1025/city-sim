@@ -1,9 +1,12 @@
+//Button Click Functionality
 let profit;
 const button = document.getElementById('button');
 button.addEventListener("click", async function () {
     await addMoney(1);
 });
 
+
+//Button Click REST API requests
 async function getMoney() {
     try {
         const response = await fetch('/get-money');
@@ -37,10 +40,95 @@ async function addMoney(amount) {
     }
 }
 
+async function subMoney(amount) {
+    await updateTotal();
+    try {
+        const response = await fetch('/subtract-money', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(amount),
+        });
+
+        if (response.ok) {
+            console.log('Money subtracted successfully');
+        } else {
+            throw new Error('Error adding money: ' + response.status);
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+async function setMultiplier(multiplier) {
+    try {
+        const response = await fetch('/set-multiplier', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(multiplier),
+        });
+
+        if (response.ok) {
+            console.log('Multiplied successfully');
+        } else {
+            throw new Error('Error adding money: ' + response.status);
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 function updateTotal() {
     const profitElement = document.getElementById('profit');
     profitElement.textContent = profit.toString();
 }
+
+function generateMessage(name) {
+    return "You bought " + name + "!";
+}
+
+// Updating Feed Box
+function createFeedCol(message) {
+    const feedBox = document.getElementById('feed');
+    feedBox.scrollTop = feedBox.scrollHeight + feedBox.clientHeight + feedBox.clientHeight;
+    const feedCol = document.createElement('div');
+    const feed = document.createTextNode(message);
+    feedCol.className = 'feedCol';
+    feedCol.appendChild(feed);
+    feedBox.appendChild(feedCol);
+}
+
+function initializeShop() {
+    fetch('/initialize-shop')
+        .then(response => response.json())
+        .then(props => {
+            const shopBox = document.getElementById('shop');
+            props.forEach(prop => {
+                console.log('Item ID:', prop.id);
+                console.log('Item Price:', prop.price);
+                console.log('Item Multiplier:', prop.multiplier);
+
+                let propElement = document.createElement('div');
+                propElement.classList.add('shopItem');
+                propElement.textContent = 'Building ' + prop.id.toLocaleString() +  '\t$' + prop.price.toLocaleString();
+                propElement.addEventListener('click', async function () {
+                    if (profit >= prop.price) {
+                        propElement.remove();
+                        await updateTotal();
+                        await subMoney(prop.price);
+                        await setMultiplier(prop.multiplier);
+                        await createFeedCol(generateMessage("Building " + prop.id))
+                    }
+                })
+                shopBox.appendChild(propElement);
+            });
+        })
+        .catch(error => console.error('Error fetching items:', error));
+}
+document.addEventListener('DOMContentLoaded', initializeShop);
 
 
 

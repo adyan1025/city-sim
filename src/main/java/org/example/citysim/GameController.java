@@ -1,15 +1,27 @@
 package org.example.citysim;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import org.example.citysim.props.Building;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+
 @RestController
 public class GameController {
     Money money = new Money();
+    Building b1 = new Building(1, 10, 2);
+    Building b2 = new Building(2, 30, 3);
+    ArrayList<Building> buildings = new ArrayList<>();
+
+    @GetMapping("/initialize-shop")
+    public ArrayList<Building> initializeShop() {
+        buildings.add(b1);
+        buildings.add(b2);
+        return buildings;
+    }
 
     @GetMapping("/get-money")
     public ResponseEntity<Integer> getMoney() {
@@ -22,10 +34,21 @@ public class GameController {
         System.out.println("ADDED " + money.getMoney());
     }
 
-    @PostMapping("/update-shop")
-    public ResponseEntity<Integer> updateGame(@RequestBody int id) {
-        return ResponseEntity.ok(id);
+    @PostMapping("/subtract-money")
+    public void subtractMoney(@RequestBody int amount) {
+        money.subtract(amount);
+        System.out.println("SUBTRACTED " + money.getMoney());
     }
+
+    @PostMapping("/set-multiplier")
+    public void setMoneyMultiplier(@RequestBody int m) {
+        money.setMultiplier(m);
+        System.out.println("MULTIPLIER " + m);
+    }
+
+
+
+
 
 //    @PostMapping("/add-money")
 //    public ResponseEntity<String> addMoney(@RequestBody String amount) {

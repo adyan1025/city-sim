@@ -2,9 +2,11 @@ package org.example.citysim;
 
 public class Money {
     private int money;
+    private int multiplier;
 
     public Money() {
         money = 0;
+        multiplier = 1;
     }
 
     public int getMoney() {
@@ -16,6 +18,11 @@ public class Money {
     }
 
     public void add(int amount) {
-        money += amount;
+        money += (int) (amount * multiplier);
+        System.out.println("multi " + (amount * multiplier));
+    }
+
+    public void setMultiplier(int multiplier) {
+        this.multiplier = multiplier;
     }
 }
