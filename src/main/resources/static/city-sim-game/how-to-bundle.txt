@@ -1,1 +1,3 @@
 npx webpack --config webpack.config.cjs
+or
+npx webpack --mode=development

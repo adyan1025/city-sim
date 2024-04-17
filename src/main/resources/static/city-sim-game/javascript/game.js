@@ -1,9 +1,22 @@
+const backgroundMusic = new Audio("/city-sim-game/background_music.mp3");
+backgroundMusic.loop = true;
+window.addEventListener("DOMContentLoaded", function() {
+    backgroundMusic.play();
+});
+
+document.addEventListener("click", function() {
+    backgroundMusic.play();
+});
+
 //Button Click Functionality
 let profit;
 const button = document.getElementById('button');
 button.addEventListener("click", async function () {
+    const audio = new Audio("city-sim-game/money_sound.mp3");
+    audio.play();
     await addMoney(1);
 });
+const modelChange = new CustomEvent('model', {});
 
 
 //Button Click REST API requests
@@ -12,10 +25,35 @@ async function getMoney() {
         const response = await fetch('/get-money');
         const number = await response.json();
         profit = number;
+        if (profit >= 40) {
+            lockIn();
+        }
         console.log('Received number:', number);
     } catch (error) {
         console.error('Error fetching number:', error);
     }
+}
+
+function lockIn() {
+    let clouds = document.getElementById('background-wrap');
+    let day = document.getElementById('day');
+    let navbar = document.getElementById('navbar');
+    let cityName = document.getElementById('cityName');
+    let menu = document.getElementById('menu');
+    let button = document.getElementById('button');
+    let feedBox = document.getElementById('feedBox');
+    let shop = document.getElementById('shop');
+    clouds.classList.add('fade-background');
+    day.classList.add('fade-background');
+    navbar.classList.add('fade-white-cards');
+    cityName.classList.add('fade-white-cards');
+    menu.classList.add('fade-menu');
+    button.classList.add('fade-menu');
+    feedBox.classList.add('fade-menu');
+    shop.classList.add('fade-menu');
+    let night = document.getElementById('bgCanvas');
+    night.style.display = 'unset';
+    clouds.style.display = 'none';
 }
 
 async function addMoney(amount) {
@@ -121,6 +159,8 @@ function initializeShop() {
                         await subMoney(prop.price);
                         await setMultiplier(prop.multiplier);
                         await createFeedCol(generateMessage("Building " + prop.id))
+                        window.dispatchEvent(modelChange);
+
                     }
                 })
                 shopBox.appendChild(propElement);

@@ -25,11 +25,6 @@ renderer.setSize(container.clientWidth, container.clientHeight);
 renderer.setClearColor(0x87ceeb, 0);
 camera.position.setZ(30);
 renderer.render(scene, camera);
-const material = new THREE.MeshStandardMaterial({
-  color: 0xff6347,
-  wireframe: true,
-});
-
 const directionalLight1 = new THREE.DirectionalLight(0xffffff, 10);
 directionalLight1.position.set(5, 10, 3);
 const directionalLight2 = new THREE.DirectionalLight(0xffffff, 1);
@@ -40,7 +35,7 @@ scene.add(directionalLight2);
 let land;
 const loader = new GLTFLoader();
 loader.load(
-  "city-sim-game/village/scene.gltf",
+  "city-sim-game/village/scene1.gltf",
   function (gltf) {
     land = gltf.scene;
     scene.add(land);
@@ -70,4 +65,34 @@ container.addEventListener("mousedown", function () {
 container.addEventListener("mouseup", function () {
   mouseDown = false;
 });
+
+let modelQueue = []
+modelQueue.push("city-sim-game/village/scene3.gltf");
+modelQueue.push("city-sim-game/village/scene2.gltf");
+
+
+
+// Function to load a new model
+function loadNewModel(modelPath) {
+  // Remove the existing model from the scene if present
+  if (land) {
+    scene.remove(land);
+  }
+
+  // Load the new model
+  loader.load(
+      modelPath,
+      function(gltf) {
+        land = gltf.scene;
+        scene.add(land);
+      },
+      undefined,
+      function(error) {
+        console.error(error);
+      }
+  );
+}
+
+
+
 animate();
