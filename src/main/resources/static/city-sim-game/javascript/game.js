@@ -139,6 +139,7 @@ function createFeedCol(message) {
     feedBox.appendChild(feedCol);
 }
 
+let buy_audio = new Audio("/city-sim-game/buy.mp3");
 function initializeShop() {
     fetch('/initialize-shop')
         .then(response => response.json())
@@ -154,6 +155,7 @@ function initializeShop() {
                 propElement.textContent = 'Building ' + prop.id.toLocaleString() +  '\t$' + prop.price.toLocaleString();
                 propElement.addEventListener('click', async function () {
                     if (profit >= prop.price) {
+                        buy_audio.play();
                         propElement.remove();
                         await updateTotal();
                         await subMoney(prop.price);
