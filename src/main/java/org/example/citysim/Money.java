@@ -3,13 +3,17 @@ package org.example.citysim;
 public class Money {
     private int money;
     private int multiplier;
+    private int passive;
 
     public Money() {
         money = 0;
         multiplier = 1;
+        passive = 0;
+
     }
 
     public int getMoney() {
+        money += passive;
         return money;
     }
 
@@ -18,11 +22,14 @@ public class Money {
     }
 
     public void add(int amount) {
-        money += (int) (amount * multiplier);
-        System.out.println("multi " + (amount * multiplier));
+        money += amount * multiplier;
     }
 
     public void setMultiplier(int multiplier) {
         this.multiplier = multiplier;
+    }
+
+    public void setPassive(int passive) {
+        this.passive = passive;
     }
 }

@@ -118,6 +118,26 @@ async function setMultiplier(multiplier) {
     }
 }
 
+async function setPassive(passive) {
+    try {
+        const response = await fetch('/add-passive', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(passive),
+        });
+
+        if (response.ok) {
+            console.log('Passive Added');
+        } else {
+            throw new Error('Error adding money: ' + response.status);
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 function updateTotal() {
     const profitElement = document.getElementById('profit');
     profitElement.textContent = profit.toString();
@@ -173,6 +193,7 @@ function initializeShop() {
 
                         if (prop.type === "Building") {
                             await createFeedCol(generateMessage("Building " + prop.id));
+                            await setPassive(prop.passive);
                         }
                         else if (prop.type === "Vehicle") {
                             await createFeedCol(generateMessage("Vehicle " + prop.id));

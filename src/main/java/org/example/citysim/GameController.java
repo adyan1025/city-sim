@@ -52,4 +52,10 @@ public class GameController {
         money.setMultiplier(m);
         System.out.println("MULTIPLIER " + m);
     }
+
+    @PostMapping("/add-passive")
+    public void setMoneyPassive(@RequestBody int p) {
+        money.setPassive(p);
+        System.out.println("PASSIVE " + p);
+    }
 }

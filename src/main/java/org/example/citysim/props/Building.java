@@ -19,4 +19,8 @@ public class Building extends Prop{
     public String getType() {
         return type;
     }
+
+    public int getPassive() {
+        return passive;
+    }
 }
