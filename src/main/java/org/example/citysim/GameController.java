@@ -14,12 +14,14 @@ public class GameController {
     Money money = new Money();
     Building b1 = new Building(1, 10, 2);
     Building b2 = new Building(2, 30, 3);
+    Building b3 = new Building(3, 50, 5);
     ArrayList<Building> buildings = new ArrayList<>();
 
     @GetMapping("/initialize-shop")
     public ArrayList<Building> initializeShop() {
         buildings.add(b1);
         buildings.add(b2);
+        buildings.add(b3);
         return buildings;
     }
 
