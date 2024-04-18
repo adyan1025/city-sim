@@ -1,33 +1,22 @@
 package org.example.citysim.props;
 
-public class Building {
+public class Building extends Prop{
     private int id;
     private int price;
-    private int multiplier;
+    private int passive;
+    private final String type;
 
-    public Building(int id, int price, int multiplier) {
-        this.id = id;
-        this.price = price;
-        this.multiplier = multiplier;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
+    public Building(int id, int price, int passive) {
+        super(id, price);
+        this.passive = passive;
+        type = "Building";
     }
 
     public double getMultiplier() {
-        return multiplier;
+        return passive;
+    }
+
+    public String getType() {
+        return type;
     }
 }

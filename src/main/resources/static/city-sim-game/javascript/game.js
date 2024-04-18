@@ -138,6 +138,9 @@ function createFeedCol(message) {
     feedBox.appendChild(feedCol);
 }
 
+setInterval(getMoney, 500);
+setInterval(updateTotal, 500);
+
 let buy_audio = new Audio("/city-sim-game/buy.mp3");
 function initializeShop() {
     fetch('/initialize-shop')
@@ -145,22 +148,40 @@ function initializeShop() {
         .then(props => {
             const shopBox = document.getElementById('shop');
             props.forEach(prop => {
-                console.log('Item ID:', prop.id);
-                console.log('Item Price:', prop.price);
-                console.log('Item Multiplier:', prop.multiplier);
+                // console.log('Item ID:', prop.id);
+                // console.log('Item Price:', prop.price);
+                // console.log('Item Multiplier:', prop.multiplier);
+                // console.log('Item Passive: ', prop.passive);
 
                 let propElement = document.createElement('div');
                 propElement.classList.add('shopItem');
-                propElement.textContent = 'Building ' + prop.id.toLocaleString() +  '\t$' + prop.price.toLocaleString();
+                if (prop.type === "Building") {
+                    propElement.textContent = 'Building ' + prop.id.toLocaleString() +  '\t$' + prop.price.toLocaleString();
+                }
+                else if (prop.type === "Vehicle") {
+                    propElement.textContent = 'Vehicle ' + prop.id.toLocaleString() +  '\t$' + prop.price.toLocaleString();
+                }
+                else {
+                    console.log("This is nothing?");
+                }
                 propElement.addEventListener('click', async function () {
                     if (profit >= prop.price) {
                         buy_audio.play();
                         propElement.remove();
                         await subMoney(prop.price);
                         await setMultiplier(prop.multiplier);
-                        await createFeedCol(generateMessage("Building " + prop.id))
-                        profit -= prop.price;
-                        updateTotal();
+
+                        if (prop.type === "Building") {
+                            await createFeedCol(generateMessage("Building " + prop.id));
+                        }
+                        else if (prop.type === "Vehicle") {
+                            await createFeedCol(generateMessage("Vehicle " + prop.id));
+                        }
+                        else {
+                            console.log("This is nothing?");
+                        }
+
+                        // profit -= prop.price;
                         window.dispatchEvent(modelChange);
 
                     }
