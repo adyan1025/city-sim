@@ -25,7 +25,7 @@ async function getMoney() {
         const response = await fetch('/get-money');
         const number = await response.json();
         profit = number;
-        if (profit >= 40) {
+        if (profit >= 1000) {
             lockIn();
         }
         console.log('Received number:', number);
@@ -143,8 +143,13 @@ function updateTotal() {
     profitElement.textContent = profit.toString();
 }
 
-function generateMessage(name) {
-    return "You bought " + name + "!";
+function generateMessage(name, type, num) {
+    if (type === 0) {
+        return "You bought " + name + "! This passively grants $" + num + ".";
+    }
+    else {
+        return "You bought " + name + "! This grants +" + num + " per click.";
+    }
 }
 
 // Updating Feed Box
@@ -168,15 +173,10 @@ function initializeShop() {
         .then(props => {
             const shopBox = document.getElementById('shop');
             props.forEach(prop => {
-                // console.log('Item ID:', prop.id);
-                // console.log('Item Price:', prop.price);
-                // console.log('Item Multiplier:', prop.multiplier);
-                // console.log('Item Passive: ', prop.passive);
-
                 let propElement = document.createElement('div');
                 propElement.classList.add('shopItem');
                 if (prop.type === "Building") {
-                    propElement.textContent = 'Building ' + prop.id.toLocaleString() +  '\t$' + prop.price.toLocaleString();
+                    propElement.textContent = 'Building ' + prop.id.toLocaleString() +  '\t$' + prop.price;
                 }
                 else if (prop.type === "Vehicle") {
                     propElement.textContent = 'Vehicle ' + prop.id.toLocaleString() +  '\t$' + prop.price.toLocaleString();
@@ -189,20 +189,18 @@ function initializeShop() {
                         buy_audio.play();
                         propElement.remove();
                         await subMoney(prop.price);
-                        await setMultiplier(prop.multiplier);
 
                         if (prop.type === "Building") {
-                            await createFeedCol(generateMessage("Building " + prop.id));
+                            await createFeedCol(generateMessage("Building " + prop.id, 0, prop.passive));
                             await setPassive(prop.passive);
                         }
                         else if (prop.type === "Vehicle") {
-                            await createFeedCol(generateMessage("Vehicle " + prop.id));
+                            await setMultiplier(prop.multiplier);
+                            await createFeedCol(generateMessage("Vehicle " + prop.id, 1, prop.multiplier));
                         }
                         else {
                             console.log("This is nothing?");
                         }
-
-                        // profit -= prop.price;
                         window.dispatchEvent(modelChange);
 
                     }
