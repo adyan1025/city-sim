@@ -1,5 +1,6 @@
 const backgroundMusic = new Audio("/city-sim-game/background_music.mp3");
 backgroundMusic.loop = true;
+backgroundMusic.volume = 0.1;
 window.addEventListener("DOMContentLoaded", function() {
     backgroundMusic.play();
 });
@@ -14,6 +15,7 @@ const button = document.getElementById('button');
 button.addEventListener("click", async function () {
     const audio = new Audio("city-sim-game/money_sound.mp3");
     audio.play();
+    audio.volume = 0.2;
     await addMoney(1);
 });
 const modelChange = new CustomEvent('model', {});
@@ -147,8 +149,14 @@ function generateMessage(name, type, num) {
     if (type === 0) {
         return "You bought " + name + "! This passively grants $" + num + ".";
     }
-    else {
+    else if (type === 1) {
         return "You bought " + name + "! This grants +" + num + " per click.";
+    }
+    else if (type === 2) {
+        return "You don't have enough for this prop!";
+    }
+    else {
+        return "You didn't buy the previous prop!";
     }
 }
 
@@ -163,46 +171,56 @@ function createFeedCol(message) {
     feedBox.appendChild(feedCol);
 }
 
-setInterval(getMoney, 500);
-setInterval(updateTotal, 500);
+setInterval(getMoney, 700);
+setInterval(updateTotal, 700);
 
 let buy_audio = new Audio("/city-sim-game/buy.mp3");
+buy_audio.volume = 0.2;
+let isBought = {};
 function initializeShop() {
     fetch('/initialize-shop')
         .then(response => response.json())
         .then(props => {
             const shopBox = document.getElementById('shop');
             props.forEach(prop => {
+                isBought[prop.id] = false;
                 let propElement = document.createElement('div');
                 propElement.classList.add('shopItem');
                 if (prop.type === "Building") {
                     propElement.textContent = 'Building ' + prop.id.toLocaleString() +  '\t$' + prop.price;
                 }
                 else if (prop.type === "Vehicle") {
-                    propElement.textContent = 'Vehicle ' + prop.id.toLocaleString() +  '\t$' + prop.price.toLocaleString();
+                    propElement.textContent = 'Vehicle ' + prop.id.toLocaleString() +  '\t$' + prop.price;
                 }
                 else {
                     console.log("This is nothing?");
                 }
                 propElement.addEventListener('click', async function () {
-                    if (profit >= prop.price) {
-                        buy_audio.play();
-                        propElement.remove();
-                        await subMoney(prop.price);
-
-                        if (prop.type === "Building") {
-                            await createFeedCol(generateMessage("Building " + prop.id, 0, prop.passive));
-                            await setPassive(prop.passive);
+                    if (prop.id === 0 || isBought[prop.id-1]) {
+                        if (!isBought[prop.id]) {
+                            if (profit >= prop.price) {
+                                isBought[prop.id] = true;
+                                buy_audio.play();
+                                propElement.remove();
+                                await subMoney(prop.price);
+                                if (prop.type === "Building") {
+                                    await createFeedCol(generateMessage("Building " + prop.id, 0, prop.passive));
+                                    await setPassive(prop.passive);
+                                } else if (prop.type === "Vehicle") {
+                                    await setMultiplier(prop.multiplier);
+                                    await createFeedCol(generateMessage("Vehicle " + prop.id, 1, prop.multiplier));
+                                } else {
+                                    console.log("This is nothing?");
+                                }
+                                window.dispatchEvent(modelChange);
+                            }
+                            else {
+                                await createFeedCol(generateMessage("", 2, 0));
+                            }
                         }
-                        else if (prop.type === "Vehicle") {
-                            await setMultiplier(prop.multiplier);
-                            await createFeedCol(generateMessage("Vehicle " + prop.id, 1, prop.multiplier));
-                        }
-                        else {
-                            console.log("This is nothing?");
-                        }
-                        window.dispatchEvent(modelChange);
-
+                    }
+                    else {
+                        await createFeedCol(generateMessage("", 3, 0));
                     }
                 })
                 shopBox.appendChild(propElement);
