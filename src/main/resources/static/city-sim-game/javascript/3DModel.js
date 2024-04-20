@@ -35,7 +35,7 @@ scene.add(directionalLight2);
 let land;
 const loader = new GLTFLoader();
 loader.load(
-  "city-sim-game/village/scene1.gltf",
+  "city-sim-game/models/scene1.gltf",
   function (gltf) {
     land = gltf.scene;
     scene.add(land);
@@ -67,8 +67,8 @@ container.addEventListener("mouseup", function () {
 });
 
 let modelQueue = []
-modelQueue.push("city-sim-game/village/scene3.gltf");
-modelQueue.push("city-sim-game/village/scene2.gltf");
+modelQueue.push("city-sim-game/models/scene3.gltf");
+modelQueue.push("city-sim-game/models/scene2.gltf");
 
 
 
@@ -92,6 +92,16 @@ function loadNewModel(modelPath) {
       }
   );
 }
+window.addEventListener('model', function() {
+    if (modelQueue.length > 0) {
+        loadNewModel(modelQueue.pop());
+    }
+    else {
+        console.log("No more models");
+    }
+
+});
+
 
 
 

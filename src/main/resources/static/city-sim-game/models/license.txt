@@ -1,0 +1,11 @@
+Model Information:
+* title:	River Village - Low poly
+* source:	https://sketchfab.com/3d-models/river-village-low-poly-c3f8af23594945ed9525a96a04190231
+* author:	sir Kev (https://sketchfab.com/kevLop)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "River Village - Low poly" (https://sketchfab.com/3d-models/river-village-low-poly-c3f8af23594945ed9525a96a04190231) by sir Kev (https://sketchfab.com/kevLop) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
