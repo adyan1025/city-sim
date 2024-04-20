@@ -66,7 +66,12 @@ container.addEventListener("mouseup", function () {
   mouseDown = false;
 });
 
-let modelQueue = []
+let modelQueue = [];
+modelQueue.push("city-sim-game/models/scene8.gltf");
+modelQueue.push("city-sim-game/models/scene7.gltf");
+modelQueue.push("city-sim-game/models/scene6.gltf");
+modelQueue.push("city-sim-game/models/scene5.gltf");
+modelQueue.push("city-sim-game/models/scene4.gltf");
 modelQueue.push("city-sim-game/models/scene3.gltf");
 modelQueue.push("city-sim-game/models/scene2.gltf");
 
@@ -99,7 +104,6 @@ window.addEventListener('model', function() {
     else {
         console.log("No more models");
     }
-
 });
 
 

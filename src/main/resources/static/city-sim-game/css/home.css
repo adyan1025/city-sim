@@ -1,5 +1,5 @@
 #navContainer {
-    border: 3px red solid;
+    border: 0px red solid;
     display: flex;
     justify-content: center;
 }
@@ -28,11 +28,20 @@ li {
 #titleContainer {
     display: flex;
     flex-direction: row;
-    border: 3px solid white;
+    border: 0px solid white;
     justify-content: center;
     align-items: center;
 }
 #title {
     font-size: 5em;
     border: 0px black solid;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: "Orbitron", sans-serif;
+    color: white;
+    background-size: cover;
+    background-color: skyblue;
 }

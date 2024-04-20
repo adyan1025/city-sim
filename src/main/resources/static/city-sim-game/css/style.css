@@ -152,11 +152,10 @@
     top: -90px;
 }
 
-/*body {*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    font-family: "Orbitron", sans-serif;*/
-/*    color: white;*/
-/*    background-size: cover;*/
-/*    background: linear-gradient(to bottom, #6db8d6 70%, #8eafba) no-repeat fixed;*/
-/*}*/
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: "Orbitron", sans-serif;
+    color: white;
+    background-size: cover;
+}

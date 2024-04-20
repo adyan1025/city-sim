@@ -1,13 +1,11 @@
 package org.example.citysim.props;
 
 public class Building extends Prop{
-    private int id;
-    private int price;
     private int passive;
     private final String type;
 
-    public Building(int id, int price, int passive) {
-        super(id, price);
+    public Building(int id, int price, String name, int passive) {
+        super(id, price, name);
         this.passive = passive;
         type = "Building";
     }

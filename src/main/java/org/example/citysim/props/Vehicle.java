@@ -4,8 +4,8 @@ public class Vehicle extends Prop{
     private int multiplier;
     private final String type;
 
-    public Vehicle(int id, int price, int multiplier) {
-        super(id, price);
+    public Vehicle(int id, int price, String name, int multiplier) {
+        super(id, price, name);
         this.multiplier = multiplier;
         type = "Vehicle";
     }

@@ -27,7 +27,7 @@ async function getMoney() {
         const response = await fetch('/get-money');
         const number = await response.json();
         profit = number;
-        if (profit >= 1000) {
+        if (profit >= 50) {
             lockIn();
         }
         console.log('Received number:', number);
@@ -188,10 +188,10 @@ function initializeShop() {
                 let propElement = document.createElement('div');
                 propElement.classList.add('shopItem');
                 if (prop.type === "Building") {
-                    propElement.textContent = 'Building ' + prop.id.toLocaleString() +  '\t$' + prop.price.toLocaleString();
+                    propElement.textContent = prop.name +  ' ($' + prop.price.toLocaleString() + ')';
                 }
                 else if (prop.type === "Vehicle") {
-                    propElement.textContent = 'Vehicle ' + prop.id.toLocaleString() +  '\t$' + prop.price.toLocaleString();
+                    propElement.textContent = prop.name +  ' ($' + prop.price.toLocaleString() + ')';
                 }
                 else {
                     console.log("This is nothing?");
@@ -205,11 +205,11 @@ function initializeShop() {
                                 propElement.remove();
                                 await subMoney(prop.price);
                                 if (prop.type === "Building") {
-                                    await createFeedCol(generateMessage("Building " + prop.id, 0, prop.passive));
+                                    await createFeedCol(generateMessage(prop.name, 0, prop.passive));
                                     await setPassive(prop.passive);
                                 } else if (prop.type === "Vehicle") {
                                     await setMultiplier(prop.multiplier);
-                                    await createFeedCol(generateMessage("Vehicle " + prop.id, 1, prop.multiplier));
+                                    await createFeedCol(generateMessage(prop.name, 1, prop.multiplier));
                                 } else {
                                     console.log("This is nothing?");
                                 }

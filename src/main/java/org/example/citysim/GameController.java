@@ -15,10 +15,13 @@ import java.util.ArrayList;
 public class GameController {
     int passive_clicks = 0;
     Money money = new Money();
-    Prop p1 = new Building(0, 10, 2);
-    Prop p2 = new Vehicle(1, 30, 2);
-    Prop p3 = new Building(2, 100, 3);
-    Prop p4 = new Vehicle(3, 2000, 3);
+    Prop p1 = new Building(0, 10, "Orange Building", 1);
+    Prop p2 = new Vehicle(1, 10, "Yellow Cars", 2);
+    Prop p3 = new Building(2, 10, "Red Building", 2);
+    Prop p4 = new Vehicle(3, 10, "Air Balloon", 3);
+    Prop p5 = new Building(4, 10, "Water Tower", 3);
+    Prop p6 = new Vehicle(5, 10, "Railway System", 3);
+    Prop p7 = new Building(6, 10, "Sci-fi Tower", 3);
     ArrayList<Prop> props = new ArrayList<>();
 
 
@@ -28,6 +31,9 @@ public class GameController {
         props.add(p2);
         props.add(p3);
         props.add(p4);
+        props.add(p5);
+        props.add(p6);
+        props.add(p7);
     }
 
     @GetMapping("/initialize-shop")
