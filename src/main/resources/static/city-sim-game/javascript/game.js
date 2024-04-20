@@ -181,16 +181,17 @@ function initializeShop() {
     fetch('/initialize-shop')
         .then(response => response.json())
         .then(props => {
+            console.log("HERE!!!" + props);
             const shopBox = document.getElementById('shop');
             props.forEach(prop => {
                 isBought[prop.id] = false;
                 let propElement = document.createElement('div');
                 propElement.classList.add('shopItem');
                 if (prop.type === "Building") {
-                    propElement.textContent = 'Building ' + prop.id.toLocaleString() +  '\t$' + prop.price;
+                    propElement.textContent = 'Building ' + prop.id.toLocaleString() +  '\t$' + prop.price.toLocaleString();
                 }
                 else if (prop.type === "Vehicle") {
-                    propElement.textContent = 'Vehicle ' + prop.id.toLocaleString() +  '\t$' + prop.price;
+                    propElement.textContent = 'Vehicle ' + prop.id.toLocaleString() +  '\t$' + prop.price.toLocaleString();
                 }
                 else {
                     console.log("This is nothing?");
@@ -228,4 +229,4 @@ function initializeShop() {
         })
         .catch(error => console.error('Error fetching items:', error));
 }
-document.addEventListener('DOMContentLoaded', initializeShop);
+initializeShop();

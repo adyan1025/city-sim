@@ -18,15 +18,20 @@ public class GameController {
     Prop p1 = new Building(0, 10, 2);
     Prop p2 = new Vehicle(1, 30, 2);
     Prop p3 = new Building(2, 100, 3);
-    Prop p4 = new Vehicle(3, 200, 3);
+    Prop p4 = new Vehicle(3, 2000, 3);
     ArrayList<Prop> props = new ArrayList<>();
 
-    @GetMapping("/initialize-shop")
-    public ArrayList<Prop> initializeShop() {
+
+
+    public GameController() {
         props.add(p1);
         props.add(p2);
         props.add(p3);
         props.add(p4);
+    }
+
+    @GetMapping("/initialize-shop")
+    public ArrayList<Prop> initializeShop() {
         return props;
     }
 
