@@ -27,9 +27,6 @@ async function getMoney() {
         const response = await fetch('/get-money');
         const number = await response.json();
         profit = number;
-        if (profit >= 50) {
-            lockIn();
-        }
         console.log('Received number:', number);
     } catch (error) {
         console.error('Error fetching number:', error);
@@ -186,20 +183,29 @@ function initializeShop() {
             props.forEach(prop => {
                 isBought[prop.id] = false;
                 let propElement = document.createElement('div');
+                let priceElement = document.createElement('span');
                 propElement.classList.add('shopItem');
+                priceElement.classList.add('price');
                 if (prop.type === "Building") {
-                    propElement.textContent = prop.name +  ' ($' + prop.price.toLocaleString() + ')';
+                    propElement.textContent = prop.name;
                 }
                 else if (prop.type === "Vehicle") {
-                    propElement.textContent = prop.name +  ' ($' + prop.price.toLocaleString() + ')';
+                    propElement.textContent = prop.name;
                 }
                 else {
                     console.log("This is nothing?");
                 }
+                priceElement.textContent = '$' + prop.price.toLocaleString();
                 propElement.addEventListener('click', async function () {
                     if (prop.id === 0 || isBought[prop.id-1]) {
                         if (!isBought[prop.id]) {
                             if (profit >= prop.price) {
+                                if (prop.id === 6) {
+                                    lockIn();
+                                }
+                                else if (prop.id === 7) {
+                                    window.location.href = "/win";
+                                }
                                 isBought[prop.id] = true;
                                 buy_audio.play();
                                 propElement.remove();
@@ -224,6 +230,9 @@ function initializeShop() {
                         await createFeedCol(generateMessage("", 3, 0));
                     }
                 })
+                const line_break = document.createElement('br')
+                propElement.appendChild(line_break);
+                propElement.appendChild(priceElement);
                 shopBox.appendChild(propElement);
             });
         })

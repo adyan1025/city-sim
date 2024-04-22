@@ -14,4 +14,9 @@ public class WebController {
         return "game";
     }
 
+    @GetMapping("/win")
+    public String getWin() {
+        return "win";
+    }
+
 }

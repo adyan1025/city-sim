@@ -22,6 +22,7 @@ public class GameController {
     Prop p5 = new Building(4, 10, "Water Tower", 3);
     Prop p6 = new Vehicle(5, 10, "Railway System", 3);
     Prop p7 = new Building(6, 10, "Sci-fi Tower", 3);
+    Prop p8 = new Building(7, 10, "Win!", 3);
     ArrayList<Prop> props = new ArrayList<>();
 
 
@@ -34,6 +35,7 @@ public class GameController {
         props.add(p5);
         props.add(p6);
         props.add(p7);
+        props.add(p8);
     }
 
     @GetMapping("/initialize-shop")

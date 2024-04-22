@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>You Won!</title>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap"
+            rel="stylesheet"
+    />
+    <link rel="stylesheet" th:href="@{/city-sim-game/css/style.css}"/>
+    <link rel="stylesheet" th:href="@{/city-sim-game/css/win.css}"/>
+</head>
+<body>
+    <nav id="navContainer">
+        <div id="navbar">
+            <ul id="nav">
+                <li>Home</li>
+                <li>About</li>
+                <li>Credits</li>
+            </ul>
+        </div>
+    </nav>
+    <div id="main">
+        <h1>City Simulation</h1>
+        <h2>Thanks for Playing</h2>
+    </div>
+    <canvas id="bgCanvas"></canvas>
+    <script type="module" th:src="@{/city-sim-game/javascript/night.js}"></script>
+</body>
+</html>
