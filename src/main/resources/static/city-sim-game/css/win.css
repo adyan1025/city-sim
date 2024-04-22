@@ -38,11 +38,8 @@ li {
     height: 80vh;
     display: flex;
     flex-direction: column;
-    gap: 0;
     align-items: center;
 }
-h2 {
-}
 h1 {
-    font-size: 10em;
+    font-size: 8em;
 }

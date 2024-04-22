@@ -1,6 +1,8 @@
 package org.example.citysim;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @org.springframework.stereotype.Controller
 public class WebController {

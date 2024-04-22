@@ -76,7 +76,7 @@ body {
   width: 100%;
 }
 #title {
-  font-size: 2.5em;
+  font-size: 2em;
   border: 0px black solid;
 }
 #nav {
@@ -199,53 +199,6 @@ li {
   align-items: center;
   border: 0px solid purple;
   width: 100%;
-}
-
-/*
-Button Animation: https://codepen.io/dooog/pen/rPrMvY
-*/
-
-#button {
-  font-size: 2em;
-  width: 10em;
-  padding: 5%;
-  background-color: rgba(2, 190, 104, 0.45);
-  text-align: center;
-  border-radius: 36px;
-  color: #fff;
-  cursor: pointer;
-  border: transparent;
-  box-shadow: 5px 5px 5px black;
-  font-family: "Orbitron", sans-serif;
-}
-
-#button:active {
-  animation: shake 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
-  transform: translate3d(0, 0, 0);
-}
-
-#button:hover {
-  background: #02e67f74;
-}
-
-@keyframes shake {
-  10%,
-  90% {
-    transform: translate3d(-8px, 0, 0);
-  }
-  20%,
-  80% {
-    transform: translate3d(12px, 0, 0);
-  }
-  30%,
-  50%,
-  70% {
-    transform: translate3d(-14px, 0, 0);
-  }
-  40%,
-  60% {
-    transform: translate3d(14px, 0, 0);
-  }
 }
 
 canvas {

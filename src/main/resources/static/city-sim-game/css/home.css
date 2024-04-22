@@ -25,23 +25,26 @@ li {
     list-style-type: none;
     display: inline-block;
 }
-#titleContainer {
+#main {
+    height: 80vh;
     display: flex;
-    flex-direction: row;
-    border: 0px solid white;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-#title {
-    font-size: 5em;
-    border: 0px black solid;
+h1 {
+    font-size: 8em;
+}
+
+#play {
+    padding: 1%;
 }
 
 body {
     display: flex;
     flex-direction: column;
     font-family: "Orbitron", sans-serif;
-    color: white;
+    color: black;
     background-size: cover;
     background-color: skyblue;
 }

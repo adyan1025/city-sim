@@ -1,14 +1,3 @@
-const backgroundMusic = new Audio("/city-sim-game/background_music.mp3");
-backgroundMusic.loop = true;
-backgroundMusic.volume = 0.1;
-window.addEventListener("DOMContentLoaded", function() {
-    backgroundMusic.play();
-});
-
-document.addEventListener("click", function() {
-    backgroundMusic.play();
-});
-
 //Button Click Functionality
 let profit;
 const button = document.getElementById('button');

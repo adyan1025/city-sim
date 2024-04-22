@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
@@ -39,8 +39,9 @@
             </ul>
         </div>
     </nav>
-    <div id="titleContainer">
-        <div id="title">CITY SIMULATION</div>
+    <div id="main">
+        <h1>CITY SIMULATION</h1>
+        <button class="button" id="play" onclick="window.location.href='/game'">Play</button>
     </div>
 
 </body>
