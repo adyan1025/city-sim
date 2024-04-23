@@ -41,7 +41,19 @@
     </nav>
     <div id="main">
         <h1>CITY SIMULATION</h1>
-        <button class="button" id="play" onclick="window.location.href='/game'">Play</button>
+        <div id="info">
+            <label>
+                <input type="text" required placeholder="City Name" id="cityName">
+            </label>
+            <button class="button" id="play" onclick=navigateToGame()>Play</button>
+        </div>
+
+        <script>
+            function navigateToGame() {
+                const cityName = document.getElementById("cityName").value;
+                window.location.href = '/game?city=' + encodeURIComponent(cityName);
+            }
+        </script>
     </div>
 
 </body>

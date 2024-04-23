@@ -1,8 +1,10 @@
 package org.example.citysim;
 
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @org.springframework.stereotype.Controller
 public class WebController {
@@ -12,7 +14,10 @@ public class WebController {
     }
 
     @GetMapping("/game")
-    public String getGame() {
+    public String getGame(@RequestParam(name = "city", required = false) String cityName, Model model) {
+        if (cityName != null) {
+            model.addAttribute("cityName", cityName);
+        }
         return "game";
     }
 

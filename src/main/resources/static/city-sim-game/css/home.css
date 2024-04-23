@@ -48,3 +48,20 @@ body {
     background-size: cover;
     background-color: skyblue;
 }
+
+input {
+    background-color: transparent;
+    width: 10em;
+    text-align: center;
+    font-size: 2em;
+    border-radius: 36px;
+}
+
+#info {
+    border: 0px black solid;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 1em;
+}
