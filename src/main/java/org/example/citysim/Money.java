@@ -32,4 +32,8 @@ public class Money {
     public void setPassive(int passive) {
         this.passive = passive;
     }
+
+    public void resetMoney() {
+        money = 0;
+    }
 }

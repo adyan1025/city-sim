@@ -40,6 +40,9 @@ public class GameController {
 
     @GetMapping("/initialize-shop")
     public ArrayList<Prop> initializeShop() {
+        money.setMultiplier(1);
+        money.setPassive(0);
+        money.resetMoney();
         return props;
     }
 
