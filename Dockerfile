@@ -1,14 +1,20 @@
-# Use a lightweight base image
-FROM adoptopenjdk/openjdk16:jre
+# Stage 1: Build the application (using Maven)
+FROM maven:3.8.5-openjdk-17-slim AS builder
 
-# Set the working directory in the container
 WORKDIR /app
 
-# Copy the compiled JAR file into the container
-COPY target/CitySim-0.0.1-SNAPSHOT.jar app.jar
+COPY pom.xml ./
+COPY src/main/java .
 
-# Expose the port your application runs on
+RUN mvn clean package
+
+# Stage 2: Package the application
+FROM openjdk:17-slim
+
+WORKDIR /app
+
+COPY --from=builder /app/target/*.jar app.jar
+
 EXPOSE 8080
 
-# Specify the command to run your application
 CMD ["java", "-jar", "app.jar"]
