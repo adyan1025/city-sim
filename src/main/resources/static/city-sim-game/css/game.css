@@ -23,6 +23,7 @@
 }
 
 @keyframes fadeNavTitle {
+  from {color: black}
   to { background-color: transparent;
   color: white;
   box-shadow: none}
@@ -225,4 +226,17 @@ canvas {
   border-radius: 36px;
   padding: 3%;
   box-shadow: 3px 3px 3px black;
+}
+
+.game-nav-link {
+  text-decoration: none;
+  color: black;
+}
+
+@keyframes fade-nav-link {
+  to { color: white }
+}
+
+.updated-nav-link {
+  animation: fade-nav-link 10s linear forwards;
 }

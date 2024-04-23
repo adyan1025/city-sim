@@ -56,3 +56,8 @@ body {
 .links {
     text-decoration: underline;
 }
+
+.nav-link {
+    text-decoration: none;
+    color: black;
+}

@@ -43,3 +43,7 @@ li {
 h1 {
     font-size: 8em;
 }
+.game-nav-link {
+    color: white;
+    text-decoration: none;
+}

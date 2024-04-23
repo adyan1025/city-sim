@@ -30,6 +30,7 @@ function lockIn() {
     let button = document.getElementById('button');
     let feedBox = document.getElementById('feedBox');
     let shop = document.getElementById('shop');
+    let nav_links = document.getElementsByClassName('game-nav-link');
     clouds.classList.add('fade-background');
     day.classList.add('fade-background');
     navbar.classList.add('fade-white-cards');
@@ -41,6 +42,9 @@ function lockIn() {
     let night = document.getElementById('bgCanvas');
     night.style.display = 'unset';
     clouds.style.display = 'none';
+    for (let i = 0; i < nav_links.length; i++) {
+        nav_links[i].classList.add('updated-nav-link');
+    }
 }
 
 async function addMoney(amount) {
