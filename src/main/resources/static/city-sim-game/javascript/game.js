@@ -4,7 +4,6 @@ const button = document.getElementById('button');
 button.addEventListener("click", async function () {
     const audio = new Audio("city-sim-game/money_sound.mp3");
     audio.play();
-    audio.volume = 0.2;
     await addMoney(1);
 });
 const modelChange = new CustomEvent('model', {});
@@ -161,7 +160,6 @@ setInterval(getMoney, 700);
 setInterval(updateTotal, 700);
 
 let buy_audio = new Audio("/city-sim-game/buy.mp3");
-buy_audio.volume = 0.2;
 let isBought = {};
 function initializeShop() {
     fetch('/initialize-shop')

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>About</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap"
+            rel="stylesheet"
+    />
+    <link rel="stylesheet" th:href="@{/city-sim-game/css/style.css}"/>
+    <link rel="stylesheet" th:href="@{/city-sim-game/css/info.css}"/>
+</head>
+<body>
+    <div id="background-wrap">
+        <div class="x2">
+            <div class="cloud"></div>
+        </div>
+        <div class="x3">
+            <div class="cloud"></div>
+        </div>
+        <div class="x4">
+            <div class="cloud"></div>
+        </div>
+        <div class="x5">
+            <div class="cloud"></div>
+        </div>
+    </div>
+    <nav id="navContainer">
+        <div id="navbar">
+            <h1 id="title">CITY SIMULATION</h1>
+            <ul id="nav">
+                <li><a th:href="@{/}" class="nav-link">Home</a></li>
+                <li><a th:href="@{/about}" class="nav-link">About</a></li>
+                <li><a th:href="@{/credits}" class="nav-link">Credits</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div id="main">
+        <h1>About</h1>
+        <p>
+            Try your hand at creating your own city! Unlock props with the revenue you get to make your city look fabulous!
+            City Simulation is an idle game where you accumulate money in order to unlock buildings and vehicles to add to
+            your city.
+        </p>
+        <h1>Rules</h1>
+        <p>You are given a blank slate. Generate money via the green button. In the menu, you have different props
+        for you to buy. You can only buy the next one after you have bought the
+        previous prop. Props consist of buildings and vehicles. You can review the Feed in the menu in order to track
+        what each purchased prop does. Anytime you buy a prop it will be added to the visuals.</p>
+        <h3>Buildings</h3>
+        <p>Buildings grant you passive income. Without having to click the button manually, you will be able to earn a set
+        amount of money per second.</p>
+        <h3>Vehicles</h3>
+        <p>Vehicles adds more money per click. For instance, every time you click after buying the Balloon vehicle, you will
+        gain $2 per every click. Every new vehicle you buy increases with the previous vehicle as well.</p>
+    </div>
+</body>
+</html>

@@ -2,11 +2,14 @@
     border: 0px red solid;
     display: flex;
     justify-content: center;
+    margin-top: 1%;
+    margin-left: 2%;
+    margin-right: 2%;
 }
 #navbar {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     padding-left: 5%;
     padding-right: 5%;
     border: 0px black solid;
@@ -15,6 +18,10 @@
     color: black;
     box-shadow: 3px 3px 3px black;
     width: 100%;
+}
+#title {
+    font-size: 2em;
+    border: 0px black solid;
 }
 #nav {
     font-size: 1.5em;
@@ -25,44 +32,27 @@ li {
     list-style-type: none;
     display: inline-block;
 }
-#main {
-    height: 80vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-h1 {
-    font-size: 8em;
-}
-
-#play {
-    padding: 1%;
-}
 
 body {
     display: flex;
     flex-direction: column;
+    gap: 2em;
     font-family: "Orbitron", sans-serif;
     color: black;
     background-size: cover;
     background-color: skyblue;
 }
 
-input {
-    background-color: transparent;
-    width: 10em;
-    text-align: center;
-    font-size: 2em;
+#main {
+    margin-left: 2%;
+    margin-right: 2%;
+    box-sizing: border-box;
+    padding-left: 2%;
+    padding-right: 2%;
     border-radius: 36px;
-    font-family: "Orbitron", sans-serif;
+    background-color: rgba(255, 255, 255, 0.605);
 }
 
-#info {
-    border: 0px black solid;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    gap: 1em;
+.links {
+    text-decoration: underline;
 }

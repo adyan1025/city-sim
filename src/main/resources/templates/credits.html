@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Credits</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap"
+            rel="stylesheet"
+    />
+    <link rel="stylesheet" th:href="@{/city-sim-game/css/style.css}"/>
+    <link rel="stylesheet" th:href="@{/city-sim-game/css/info.css}"/>
+</head>
+<body>
+<div id="background-wrap">
+    <div class="x2">
+        <div class="cloud"></div>
+    </div>
+    <div class="x3">
+        <div class="cloud"></div>
+    </div>
+    <div class="x4">
+        <div class="cloud"></div>
+    </div>
+    <div class="x5">
+        <div class="cloud"></div>
+    </div>
+</div>
+<nav id="navContainer">
+    <div id="navbar">
+        <h1 id="title">CITY SIMULATION</h1>
+        <ul id="nav">
+            <li><a th:href="@{/}" class="nav-link">Home</a></li>
+            <li><a th:href="@{/about}" class="nav-link">About</a></li>
+            <li><a th:href="@{/credits}" class="nav-link">Credits</a></li>
+        </ul>
+    </div>
+</nav>
+<div id="main">
+    <h1>Credits</h1>
+    <p>
+        Created by Adyan, Bilal, Zain, and Elias.
+    </p>
+    <h3>Source Code</h3>
+    <p class="links"><a th:href="@{https://github.com/adyan1025/city-sim}" class="links">City Sim GitHub</a></p>
+    <h3>Tech Stack</h3>
+    <p>Java Spring, HTML/CSS, Javascript, Three.js, Blender</p>
+    <h3>Models</h3>
+    <h4><a th:href="@{https://sketchfab.com/3d-models/river-village-low-poly-c3f8af23594945ed9525a96a04190231}" class="links">Low Poly Village</a></h4>
+    <h4><a th:href="@{https://sketchfab.com/3d-models/low-poly-building-f0722265cf8d4a41ba78ab1587d18ac8}" class="links">Orange Building</a></h4>
+    <h4><a th:href="@{https://sketchfab.com/3d-models/low-poly-car-6e624fba16914888bd435fb697f4a2b9}" class="links">Yellow Car</a></h4>
+    <h4><a th:href="@{https://sketchfab.com/3d-models/low-poly-building-f943ba2828a64b7d858ee6e4bdacedc6}" class="links">Red Building</a></h4>
+    <h4><a th:href="@{https://sketchfab.com/3d-models/hot-air-balloon-low-poly-optimized-game-ready-f88e284460f24832bb0929ca628c2745}" class="links">Hot Air Balloon</a></h4>
+    <h4><a th:href="@{https://sketchfab.com/3d-models/water-tank-aff4e9fd3f7042d5855fade7411df4df}" class="links">Water Tower</a></h4>
+    <h4><a th:href="@{https://sketchfab.com/3d-models/low-poly-train-c84cd4f7e43b4877aa16d0b920a5e751}" class="links">Railway System</a></h4>
+    <h4><a th:href="@{https://sketchfab.com/3d-models/sci-fi-building-2-3559c3a0038f4c5f94335707ccff8217}" class="links">Sci Fi Building</a></h4>
+    <h3>Used Code</h3>
+    <h4><a th:href="@{https://codepen.io/dooog/pen/rPrMvY}" class="links">Button Animation</a></h4>
+    <h4><a th:href="@{https://codepen.io/Mark_Bowley/pen/LYZEBq}" class="links">Clouds Animation</a></h4>
+    <h4><a th:href="@{https://codepen.io/loktar00/pen/DdWxwL}" class="links">Night Animation</a></h4>
+    <h3>Audio</h3>
+    <h4><a th:href="@{https://www.youtube.com/watch?v=vNhs9CSI0Vc}" class="links">Clicking Audio</a></h4>
+    <h4><a th:href="@{https://www.youtube.com/watch?v=QVPRjBRc_zw}" class="links">Purchasing Audio</a></h4>
+
+</div>
+</body>
+</html>

@@ -26,4 +26,13 @@ public class WebController {
         return "win";
     }
 
+    @GetMapping("/about")
+    public String getAbout() {
+        return "about";
+    }
+
+    @GetMapping("/credits")
+    public String getCredits() {
+        return "credits";
+    }
 }
